@@ -26,13 +26,9 @@ DT_ <- DT[Date %in% c(day01, day02)]
 DT_[, Global_active_power := as.numeric(Global_active_power)]
 DT_[, 4:9 := lapply(.SD, as.numeric), .SDcols=4:9]
 
-# Plot to screen
 # Plot 2:
+png("Plot2.png", 480, 480)
 DT_[, plot(Time, Global_active_power, pch=20, type="l",
                 xlab="",
                 ylab="Global Active Power (kilowatts)") ]
-# Is it possible to draw multple plots using 'by=' and par(mfrow..)
-
-# Copy to PNG
-dev.copy(png, file="Plot2.png")
 dev.off()

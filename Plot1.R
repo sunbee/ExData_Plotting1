@@ -26,12 +26,11 @@ DT_ <- DT[Date %in% c(day01, day02)]
 DT_[, Global_active_power := as.numeric(Global_active_power)]
 DT_[, 4:9 := lapply(.SD, as.numeric), .SDcols=4:9]
 
-# Plot to screen
+# Plot 1
+png("Plot1.png", 480, 480)
 DT_[, hist(Global_active_power, col="red", 
                                 xlab="Global Active Power (kilowatts)",
                                 ylab="Frequency",
                                 main="Global Active Power")]
 
-# Copy to PNG
-dev.copy(png, file="Plot1.png")
 dev.off()
