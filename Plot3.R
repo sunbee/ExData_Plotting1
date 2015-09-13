@@ -32,9 +32,9 @@ DT_[, {plot(Time, Sub_metering_1, type="n", ylab="Energy sub metering", xlab="")
        legend("topright", lty=c(1,1,1), 
               legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
               lwd=c(2.5,2.5,2.5),
-              col=c("gray", "blue", "red"));
+              col=c("gray", "green", "blue"));
        lines(Time, Sub_metering_1, col="gray");
-       lines(Time, Sub_metering_2, col="red");
+       lines(Time, Sub_metering_2, col="green");
        lines(Time, Sub_metering_3, col="blue")} ]
 dev.off()
 

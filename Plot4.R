@@ -26,19 +26,21 @@ DT_ <- DT[Date %in% c(day01, day02)]
 DT_[, Global_active_power := as.numeric(Global_active_power)]
 DT_[, 4:9 := lapply(.SD, as.numeric), .SDcols=4:9]
 
-# Plot
-png("Plot3.png", 480, 480)
+# Plot 4
+png("Plot4.png", 480, 480)
 defaults <- par()
-par(mfrow=c(2,2), mar=c(0.5, 0.5,0.5,0.5))
+par(mfrow=c(2,2), mar=c(4, 4, 4, 4))
 DT_[, plot(Time, Global_active_power, type="l", xlab="", ylab="Global Active Power") ]
+DT_[, plot(Time, Voltage, type="l", xlab="datetime", ylab="Voltage") ]
 DT_[, {plot(Time, Sub_metering_1, type="n", ylab="Energy sub metering", xlab="");
        legend("topright", lty=c(1,1,1), 
               legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
               lwd=c(2.5,2.5,2.5),
-              col=c("gray", "blue", "red"));
+              col=c("gray", "green", "blue"),
+              cex=0.55, bty="n");
        lines(Time, Sub_metering_1, col="gray");
-       lines(Time, Sub_metering_2, col="red");
+       lines(Time, Sub_metering_2, col="green");
        lines(Time, Sub_metering_3, col="blue")} ]
-DT_[, {plot(Time, Global_reactive_power, pch=20); lines(Time, Global_reactive_power)} ]
+DT_[, plot(Time, Global_reactive_power, type='l', xlab="datetime")]
 par <- defaults
 dev.off()
