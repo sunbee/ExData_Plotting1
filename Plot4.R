@@ -37,10 +37,11 @@ DT_[, {plot(Time, Sub_metering_1, type="n", ylab="Energy sub metering", xlab="")
               legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
               lwd=c(2.5,2.5,2.5),
               col=c("gray", "green", "blue"),
-              cex=0.55, bty="n");
+              cex=0.75, bty="n");
        lines(Time, Sub_metering_1, col="gray");
        lines(Time, Sub_metering_2, col="green");
        lines(Time, Sub_metering_3, col="blue")} ]
-DT_[, plot(Time, Global_reactive_power, type='l', xlab="datetime")]
+DT_[, plot(Time, Global_reactive_power, type='l', 
+           xlab="datetime", ylim=c(0, 0.5))]
 par <- defaults
 dev.off()
